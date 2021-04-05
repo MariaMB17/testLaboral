@@ -1,0 +1,14 @@
+
+@import '~@angular/material/theming';
+@include mat-core();
+$front-pescaderia-primary: mat-palette($mat-deep-orange, 500);
+$front-pescaderia-accent: mat-palette($mat-deep-orange, 400);
+$front-pescaderia-warn: mat-palette($mat-red);
+$front-pescaderia-theme: mat-light-theme((
+  color: (
+    primary: $front-pescaderia-primary,
+    accent: $front-pescaderia-accent,
+    warn: $front-pescaderia-warn,
+  )
+));
+@include angular-material-theme($front-pescaderia-theme);
