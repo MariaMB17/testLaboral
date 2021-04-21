@@ -1,1 +1,10 @@
 @import "src/@SPTheme/scss/SPTheme.scss";
+
+:host {
+    #login {
+        width: 100%;
+        height: $HEIGHT;
+        overflow: hidden;
+        background-size: cover;
+    }
+}
