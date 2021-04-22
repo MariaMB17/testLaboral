@@ -1,20 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { DefaultComponent } from './container/default/default.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
-
+import { CustomBreakPointsProvider } from 'app/layout/custom-breakpoints';
+import { VerticalLayoutModule } from 'app/layout/vertical/vertical-layout.module';
+import { HorizontalLayoutModule } from 'app/layout/horizontal/horizontal-layout.module';
 
 @NgModule({
-  declarations: [
-    DefaultComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-  ],
-  exports: [
-    DefaultComponent
-  ]
+  imports: [FlexLayoutModule.withConfig({ disableDefaultBps: true }), VerticalLayoutModule, HorizontalLayoutModule],
+  providers: [CustomBreakPointsProvider],
+  exports: [VerticalLayoutModule, HorizontalLayoutModule]
 })
-export class LayoutModule { }
+export class LayoutModule {}
