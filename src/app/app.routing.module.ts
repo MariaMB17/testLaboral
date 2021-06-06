@@ -10,19 +10,38 @@ const routes: Routes = [
   { 
     path: '', 
     component: DefaultComponent,
-    canActivate: [AuthGuard] 
+    data: {
+      reuseRoute: false,
+    },
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'dashboards',
+        loadChildren: () =>
+          import('./pages/dashboards/dashboards.module').then(
+            (m) => m.DashboardsModule
+          ),
+      }
+    ]
   },
   {
     path: 'auth',
     loadChildren: () =>
       import('./pages/auth/auth.module').then((m) => m.AuthModule),
   },
+  {
+    path: 'security',
+    loadChildren: () =>
+      import('./pages/security/security.module').then(
+        (m) => m.SecurityModule
+      ),
+  }  
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      preloadingStrategy: PreloadAllModules
+      //preloadingStrategy: PreloadAllModules
     })
   ],
   providers: [],

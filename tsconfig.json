@@ -7,11 +7,13 @@
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "strict": true,
     "lib": [
       "es2018",
       "dom"
@@ -19,7 +21,9 @@
     "paths": {
       "@SPtheme/*":["src/@SPTheme/*"],
       "@Core/*":["src/app/core/*"],
-      "@Shared/*":["src/app/shared/*"]
+      "@Shared/*":["src/app/shared/*"],
+      "@Model/*":["src/app/core/models/*"],
+      "@Services/*":["src/app/core/services/*"]
     }
   }
 }

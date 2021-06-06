@@ -7,7 +7,7 @@ import { NotifyService } from './core/services/notify.service'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'front-pescaderia';
+  title = 'front';
 
   constructor(
     private _notifyService: NotifyService

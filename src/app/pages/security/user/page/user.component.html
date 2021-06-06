@@ -1,0 +1,200 @@
+<div fxLayout="row" fxFlex id="user-register">
+    
+    <div
+        [fxShow.xs]="noVisible"
+        [fxShow.sm]="noVisible"        
+        fxFlex.md="30"
+        fxFlex.lg="23.3"
+        fxFlex.xl="23.3"
+        fxLayout="column"
+        fxLayoutAlign="start" style="background: blue;">        
+        <div 
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            style="
+                height: 97.5vh;
+                background-image: url('/assets/imagenes/login/piedras.jpg');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;">
+        </div>
+    </div>
+
+    <div 
+        fxFlex.xs="100"
+        fxLayout.xs= "row"        
+        fxFlex.sm="100"        
+        fxFlex.md="70"
+        fxFlex.lg="76.6"
+        fxFlex.xl="76.6"
+        fxLayout="column" style="background: blueviolet;">        
+        <div
+            *ngIf="showLoadBar"
+            id="login-intro"
+            fxFlex>
+            <mat-progress-bar
+                class="loading-bar"
+                color="accent"
+                mode="indeterminate">
+            </mat-progress-bar>
+        </div>
+        <div 
+            id="user-form-wraper"
+            style="overflow: -webkit-paged-x; height: 97vh;">
+            <div id="user-form">
+                <div class="logo">
+                    <label>Registro de usuarios</label>
+                </div>
+                <form name="userForm" [formGroup]="formControlUser" novalidate>
+                    <div fxLayout= "row" fxLayout.xs= "column">
+                        <mat-form-field fxFlex="48" fxFlex.xs="100">
+                            <input
+                              autocomplete="off"
+                              matInput
+                              required
+                              [placeholder]="'Cédula'"
+                              name="cedula"
+                              formControlName="cedula"
+                              maxLengthValue="10"
+                              type="number"
+                              (keyup)="changeInput($event, 'cedula')"/>
+                              <mat-error *ngIf="userFormErrors.cedula.required">
+                                La cédula es requerida
+                              </mat-error>
+                        </mat-form-field>
+                        <div fxFlex="4" [fxShow.xs]="true"></div>
+                        <mat-form-field fxFlex="48" fxFlex.xs="100">
+                            <input
+                              autocomplete="off"
+                              matInput
+                              required
+                              [placeholder]="'Nombres completos'"
+                              name="nombres"
+                              formControlName="nombres"
+                              maxLengthValue="250"
+                              (keyup)="changeInputNombres($event, 'nombres')"/>
+                              <mat-error *ngIf="userFormErrors.nombres.required">
+                                Los nomchangeInputNumericobres son requeridos
+                              </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout= "row" fxLayout.xs="column" fxLayout.sm="column">
+                        <mat-form-field fxFlex="30" fxFlex.xs="100" fxFlex.sm="100">
+                            <input 
+                                autocomplete="off"
+                                matInput
+                                [matDatepicker]="datepicker"
+                                [placeholder]="'fecha de nacimiento'"
+                                name="fechaNacimiento"
+                                formControlName="fechaNacimiento"
+                                (dateChange)="asignarFechaNacimiento('change', $event)"
+                            />
+                            <mat-datepicker #datepicker disabled="false"></mat-datepicker>
+                            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+                        </mat-form-field>
+                        <div fxFlex="4" [fxShow.xs]="true" [fxShow.sm]="true"></div>
+                        <mat-form-field fxFlex="35" fxFlex.xs="100" fxFlex.sm="100">
+                            <input
+                              autocomplete="off"
+                              matInput
+                              required
+                              [placeholder]="'Correo eléctronico'"
+                              name="email"
+                              formControlName="email"
+                              maxLengthValue="100"
+                              (keyup)="changeInput($event, 'email')"/>
+                              <mat-error *ngIf="userFormErrors.email.required">
+                                Email is required
+                              </mat-error>
+                              <mat-error 
+                                *ngIf="
+                                  !userFormErrors.email.required && userFormErrors.email.email
+                                ">
+                                Please enter a valid email address
+                              </mat-error>
+                        </mat-form-field>
+                        <div fxFlex="4" [fxShow.xs]="true" [fxShow.sm]="true"></div>
+                        <mat-form-field fxFlex="27" fxFlex.xs="100" fxFlex.sm="100">
+                            <input
+                              autocomplete="off"
+                              matInput
+                              [placeholder]="'Teléfono'"
+                              name="telefono"
+                              formControlName="telefono"
+                              (keyup)="changeInput($event, 'telefono')"/>
+                        </mat-form-field>
+                    </div>
+
+                    <div fxLayout= "row" fxLayout.xs="column">
+                        <mat-form-field fxFlex="60" fxFlex.xs="98">
+                            <mat-select
+                                formControlName="organizacion"
+                                fxFlexFill
+                                [placeholder]="'organizacion para la que trabaja'"
+                                (selectionChange)="changeOrganizacion($event)">
+                                <mat-option *ngFor="let organizacion of optionOrnanizacion" 
+                                    [value]="organizacion.id">
+                                    {{ organizacion.descripcion }}
+                                </mat-option>
+                                <mat-error *ngIf="userFormErrors.organizacion.required">
+                                    Email is required
+                                  </mat-error>
+                            </mat-select>
+                            <input
+                              autocomplete="off"
+                              matInput
+                              [placeholder]="'organizacion para la que trabaja'"
+                              name="organizacion"
+                              formControlName="organizacion"/>
+                        </mat-form-field>
+                    </div>
+                    <div fxLayout= "row" fxLayout.xs="column">
+                        <div fxFlex="20" fxFlex.xs="100">
+                            <button 
+                                mat-raised-button
+                                color="primary"
+                                class="submit-button"
+                                [disabled]="formControlUser.invalid"
+                                (click)="save()">
+                                Guardar
+                            </button>
+                        </div>
+                        <div fxFlex="2" [fxShow.xs]="true"></div>
+                        <div fxFlex="20" fxFlex.xs="100">
+                            <button 
+                                mat-raised-button
+                                color="primary"
+                                class="submit-button"
+                                [disabled]="disabledBtnEliminar"
+                                (click)="delete()">
+                                Eliminar
+                            </button>
+                        </div> 
+                        <div fxFlex="2" [fxShow.xs]="true"></div>
+                        <div fxFlex="20" fxFlex.xs="100">
+                            <button 
+                                mat-raised-button
+                                color="primary"
+                                class="submit-button"
+                                (click)="cancelar()">
+                                Cancelar
+                            </button>
+                        </div> 
+                        <div fxFlex="2" [fxShow.xs]="true"></div>
+                        <div fxFlex="20" fxFlex.xs="100">
+                            <button 
+                                mat-raised-button
+                                color="primary"
+                                class="submit-button"
+                                (click)="Regresar()">
+                                Regresar
+                            </button>
+                        </div>                       
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

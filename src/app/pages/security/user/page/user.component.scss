@@ -1,0 +1,133 @@
+@import "src/@SPTheme/scss/SPTheme.scss";
+
+:host {
+    #user-register {
+      width: 100%;
+      height: 97%;
+      overflow: hidden;
+      background-size: cover;
+      * {
+        font-family: 'Myriad Pro' !important;
+      }
+      #user-form-wraper {
+        overflow: auto;
+        background: #e2d1c9;
+        @include mat-elevation(16);
+  
+        @include media-breakpoint("xs") {
+          width: 100%;
+          min-width: 100%;
+          max-width: 100%;
+        }
+  
+        #user-form {
+          background: #e2d1c9;
+          padding: 15px;
+  
+          /*@include media-breakpoint("xs") {
+            text-align: center;
+            padding: 24px;
+          }*/
+  
+          .logo {
+            font-weight: 500;
+            text-align: center;
+            border-radius: 2px;
+            text-align: center;
+            color: #eef1f7; 
+            height: 50px;  
+            background: #401779;
+            padding-top: 20px;        
+            label {
+              display: block;
+              font-size: 20px;
+              font-weight: bold;
+              margin-bottom: 20px;
+            }
+          }
+  
+          .title {
+            font-size: 21px;
+          }
+  
+          .description {
+            padding-top: 8px;
+          }
+  
+          form {
+            background: #e2d1c9;
+            padding-top: 32px;
+            padding-left: 15px;
+            padding-right: 15px;
+  
+            mat-form-field {
+              width: 100%;
+            }
+  
+            .submit-button {
+              width: 100%;
+              margin: 16px auto;
+              display: block;
+              border-radius: 10px;
+  
+              @include media-breakpoint("xs") {
+                width: 80%;
+              }
+            }
+          }
+  
+          .separator {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 24px auto;
+            position: relative;
+            overflow: hidden;
+            width: 100px;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.54);
+  
+            .text {
+              display: inline-flex;
+              position: relative;
+              padding: 0 8px;
+              z-index: 9999;
+  
+              &:before,
+              &:after {
+                content: "";
+                display: block;
+                width: 30px;
+                position: absolute;
+                top: 10px;
+                border-top: 1px solid rgba(0, 0, 0, 0.12);
+              }
+  
+              &:before {
+                right: 100%;
+              }
+  
+              &:after {
+                left: 100%;
+              }
+            }
+          }
+  
+          .register {
+            margin: 32px auto 24px auto;
+            width: 250px;
+            font-weight: 500;
+  
+            .text {
+              margin-right: 8px;
+            }
+          }
+        }
+      } 
+    }
+ }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+input[type=number] { -moz-appearance:textfield; }

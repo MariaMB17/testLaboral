@@ -1,0 +1,29 @@
+.graficos {
+    height: 100%;
+    width: 100%;
+    background: #e2d1c9;
+    * {
+        font-family: 'Myriad Pro' !important;
+      }
+    .titulo{
+        font-weight: 500;
+        text-align: center;
+        border-radius: 2px;
+        text-align: center;
+        background: #401779;
+        height: 100px;
+        padding-top: 35px;
+        color: #eef1f7;
+        label {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    }
+    .content-graficas{
+        background: #e2d1c9;
+        height: auto;
+        overflow: auto;
+    }
+}

@@ -1,4 +1,59 @@
-<div class="layout_default">
-    <router-outlet></router-outlet>
-</div>
+<div fxLayout="row" fxFlex id="layout_default">    
+    <div
+        [fxShow.xs]="noVisible"
+        [fxShow.sm]="noVisible"        
+        fxFlex.md="30"
+        fxFlex.lg="23.3"
+        fxFlex.xl="23.3"
+        fxLayout="column"
+        fxLayoutAlign="start" style="background: blue;">        
+        <div 
+            fxLayout="column"
+            fxLayoutAlign="center center"
+            style="
+                height: 97.5vh;
+                background-image: url('/assets/imagenes/login/piedras.jpg');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;">
+        </div>
+    </div>
 
+    <div 
+        fxFlex.xs="100"
+        fxLayout.xs= "row"        
+        fxFlex.sm="100"        
+        fxFlex.md="70"
+        fxFlex.lg="76.6"
+        fxFlex.xl="76.6"
+        fxLayout="column" style="background: blueviolet;">        
+        <div
+            *ngIf="showLoadBar"
+            id="login-intro"
+            fxFlex>
+            <mat-progress-bar
+                class="loading-bar"
+                color="accent"
+                mode="indeterminate">
+            </mat-progress-bar>
+        </div>
+        <div 
+            id="default-layout-wraper"
+            style="overflow: -webkit-paged-x; height: 97vh;width: 100%;">
+            <div id="user-form" class="container-layout">
+                <router-outlet></router-outlet>                
+            </div>
+        </div>
+    </div>
+    <!-- <div 
+        fxFlex.xs="100"
+        fxLayout.xs= "row"        
+        fxFlex.sm="100"        
+        fxFlex.md="70"
+        fxFlex.lg="76.6"
+        fxFlex.xl="76.6"
+        fxLayout="column" style="background: blueviolet;">
+        <router-outlet></router-outlet>
+    </div> -->
+</div>

@@ -25,5 +25,10 @@ export class StorageService {
   }
 }
 export enum KeyStorage {
-  TOKEN = 'token'
+  TOKEN = 'token',
+  EMAIL = 'email',
+  DATE_LAST_LOGIN = 'date_last_login',
+  USER_DATA = 'user_data',
+  IS_LOGGED_IN = 'is_logged_in',
+  IS_SHOW_CHAT = 'is_show_chat'
 }

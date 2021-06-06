@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser'
+import { HttpClientModule, 
+  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core'
 import { ToastModule } from 'primeng/toast'
 import { MessageService } from 'primeng/api'
@@ -9,6 +11,7 @@ import { SPThemeModule } from '@SPtheme/theme.module'
 import { AppRoutingModule } from './app.routing.module'
 import { SPThemeSharedModule } from '@SPtheme/shared.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpTokenUserInterceptor } from '@Core/interceptors/http-token-user.interceptor';
 
 
 @NgModule({
@@ -16,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     ToastModule,
     LayoutModule,
     SharedModule,
@@ -25,7 +29,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SPThemeSharedModule,
     BrowserAnimationsModule,    
   ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpTokenUserInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
