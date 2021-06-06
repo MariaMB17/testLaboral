@@ -13,7 +13,6 @@ import { SPThemeSharedModule } from '@SPtheme/shared.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpTokenUserInterceptor } from '@Core/interceptors/http-token-user.interceptor';
 
-
 @NgModule({
   declarations: [
     AppComponent
