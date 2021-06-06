@@ -25,7 +25,11 @@
             "aot": true,
             "allowedCommonJsDependencies": [
               "lodash",
-              "chart.js"
+              "chart.js",
+              "core-js",
+              "raf",
+              "xlsx",
+              "@babel/runtime"
             ],
             "assets": [
               "src/favicon.ico",

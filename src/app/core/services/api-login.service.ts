@@ -16,10 +16,8 @@ export class ApiLoginService {
   ) { }
 
   public loginGuard(): Observable<boolean | UrlTree> {
-    if (this._authService.isLoggedIn) {
+    if (this._storageService.getValue(KeyStorage.TOKEN)) {
       return of(true);
-    //} else if (this._storageService.getValue(KeyStorage.TOKEN)) {
-      //return this.loginByApiKey();
     } else {
       this.logout();
       return of(this._router.parseUrl('/auth/login'));
